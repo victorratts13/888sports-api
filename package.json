@@ -1,0 +1,35 @@
+{
+  "name": "888sports-api",
+  "version": "1.0.0",
+  "description": "api para 888sports.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorratts13/888sports-api.git"
+  },
+  "keywords": [
+    "888bets",
+    "888sports",
+    "888",
+    "bets",
+    "bet365",
+    "api",
+    "sport-api"
+  ],
+  "author": "ratts13",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victorratts13/888sports-api/issues"
+  },
+  "homepage": "https://github.com/victorratts13/888sports-api#readme",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "axios-cookiejar-support": "^2.0.3",
+    "dotenv": "^10.0.0",
+    "qs": "^6.10.1",
+    "tough-cookie": "^4.0.0"
+  }
+}
