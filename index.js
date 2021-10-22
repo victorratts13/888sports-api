@@ -171,6 +171,16 @@ class bets888 {
           })
      }
 
+     queryHost(url = '', method = '', query = {}){
+          return new Promise((resolve, reject) => {
+               api[method](url, qs.stringify(query)).then(rest => {
+                    return resolve(rest.data)
+               }).catch(e => {
+                    return reject(e)
+               })
+          })
+     }
+
 }
 
 module.exports = bets888;
