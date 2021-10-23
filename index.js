@@ -24,7 +24,7 @@ class bets888 {
                api.post('/spectate/load/state', qs.stringify(config)).then(rest => {
                     return resolve({
                          data: rest.data,
-                         coockie: cookiesSet({jar, jar})
+                         cookie: cookiesSet({jar, jar})
                     })
                }).catch(e => {
                     return reject(e)

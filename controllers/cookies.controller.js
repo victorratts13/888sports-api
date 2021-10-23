@@ -5,7 +5,7 @@ function cookiesSet(apiCookie) {
      //console.log(cookieParsed)
      text = '';
      for(var cookie of cookieParsed.jar.cookies){
-          text += `${cookie.key}=${cookie.value};`
+          text += `${cookie.key}=${cookie.value}; `
      }
 
      return text;

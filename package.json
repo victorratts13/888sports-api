@@ -1,6 +1,6 @@
 {
   "name": "888sports-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "api para 888sports.com",
   "main": "index.js",
   "scripts": {
