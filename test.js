@@ -2,9 +2,9 @@
 const bets = require('.');
 const sport = new bets();
 
-// sport.webConfig().then(rest => {
-//      console.log(rest)
-// })
+sport.webConfig().then(rest => {
+     console.log(rest)
+})
 
 // sport.breadcrumbs().then(rest => {
 //      console.log(rest)

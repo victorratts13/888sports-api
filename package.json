@@ -1,6 +1,6 @@
 {
   "name": "888sports-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "api para 888sports.com",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.23.0",
     "axios-cookiejar-support": "^2.0.3",
+    "axios-fetch-request": "^1.0.0",
     "dotenv": "^10.0.0",
     "qs": "^6.10.1",
     "tough-cookie": "^4.0.0"

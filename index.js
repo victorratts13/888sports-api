@@ -1,6 +1,7 @@
 'use strict'
 const qs = require('qs');
-const { api } = require("./api/base.api");
+const { api, jar } = require("./api/base.api");
+const { cookiesSet } = require('./controllers/cookies.controller');
 
 class bets888 {
      constructor(config = {
@@ -171,7 +172,7 @@ class bets888 {
           })
      }
 
-     queryHost(url = '', method = '', query = {}){
+     queryHost(url = '', method = '', query = {}) {
           return new Promise((resolve, reject) => {
                api[method](url, qs.stringify(query)).then(rest => {
                     return resolve(rest.data)
