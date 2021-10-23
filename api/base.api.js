@@ -19,7 +19,7 @@ function parseCookie(arr = []) {
      for(var ar of arr){
           txt += `${ar} `
      }
-     console.log(txt)
+     //console.log(txt)
      return txt;
 }
 var header = {

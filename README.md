@@ -4,7 +4,7 @@
 
 # introdução
 
-``888sports-api`` é uma api esportiva baseada em 888sports &copy; que fornece varias opções de esportes e informações em tempo real para ser consumida atraves de aplicações e sistemas. Uma api de resposta rapida com todas as informações de esports, tais como Odds de mercado.
+``888sports-api`` é uma api esportiva baseada em 888sports &copy; que fornece varias opções de esportes e informações em tempo real para serem consumidas atraves de aplicações e sistemas. Uma api de resposta rapida com todas as informações de esports, tais como Odds de mercado.
 
 ## instalação
 
@@ -36,7 +36,8 @@ const sport = new bets();
 Para definir o escopo de configuração geral, utilize:
 
 ```js
-//é possivel definir um novo escopo de configuração caso seja necessario.
+// é possivel definir um novo escopo de configuração caso seja necessario.
+// este metodo é importante, pois através dele é possivel obter os cookies de acesso.
 sport.webConfig().then(rest => {
      console.log(rest)
 })
@@ -47,7 +48,7 @@ sport.webConfig().then(rest => {
 este metodo mostra a atual seleção configurada. 
 
 ```js
-sport.breadcrumbs().then(rest => {
+sport.breadcrumbs({ "id": 2, "label": "Football", "slug": "football" }, 'cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -57,7 +58,7 @@ sport.breadcrumbs().then(rest => {
 Para obter as informações de Ao-vivo resumidas: 
 
 ```js
-sport.inPlayEvent('football').then(rest => {
+sport.inPlayEvent('football', 'cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -67,7 +68,7 @@ sport.inPlayEvent('football').then(rest => {
 para obter informações de eventos apresentados.
 
 ```js
-sports.featured().then(rest => {
+sports.featured('cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -77,7 +78,7 @@ sports.featured().then(rest => {
 para obter dados de sports virtuais
 
 ```js 
-sports.getVirtualGames().then(rest => {
+sports.getVirtualGames('cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -90,7 +91,7 @@ para obter detalhes de todos os eventos ao-vivo
 sports.getFeaturedMatchesEvents('football', {
      country: 'BRA', // lang
      widget_label: 'Featured Football' // information
-}).then(rest => {
+}, cookies).then(rest => {
      console.log(rest)
 })
 ```
@@ -100,7 +101,7 @@ sports.getFeaturedMatchesEvents('football', {
 Para obter informações de todos os esportes
 
 ```js
-sports.allSports().then(rest => {
+sports.allSports('cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -110,7 +111,7 @@ sports.allSports().then(rest => {
 Para obter os eventos mais populares e procurados.
 
 ```js
-sports.getPopularEvents().then(rest => {
+sports.getPopularEvents('cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -120,7 +121,7 @@ sports.getPopularEvents().then(rest => {
 Para obter o book de apostas.
 
 ```js
-sports.sportBook('BRA').then(rest => {
+sports.sportBook('BRA', 'cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -140,7 +141,7 @@ sports.fetchEvents({
      eventId: 1349631,
      categoryId: 29850,
      sportId: 2
-}).then(rest => {
+}, 'cookies').then(rest => {
      console.log(rest)
 })
 ```
@@ -161,7 +162,7 @@ sports.event(1349631).then(rest => {
 Buscar informações atraves de uma URI especifica
 
 ```js
-sports.urlPath('/au-vivo/mercados_partida/1349631-ipe-1349631/').then(rest => {
+sports.urlPath('/au-vivo/mercados_partida/1349631-ipe-1349631/', 'cookies').then(rest => {
      console.log(rest)
 })
 
@@ -172,7 +173,7 @@ sports.urlPath('/au-vivo/mercados_partida/1349631-ipe-1349631/').then(rest => {
 Para fazer uma requisição atraves de uma URL especifica do servidor.
 
 ```js
-sports.queryHost('URL').then(rest => {
+sports.queryHost('URL', 'BODY', {query: ''}, 'cookies').then(rest => {
      console.log(rest)
 })
 

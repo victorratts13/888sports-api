@@ -22,6 +22,23 @@ class bets888 {
      webConfig(config = this.config) {
           return new Promise((resolve, reject) => {
                api.post('/spectate/load/state', qs.stringify(config)).then(rest => {
+                    return resolve({
+                         data: rest.data,
+                         coockie: cookiesSet({jar, jar})
+                    })
+               }).catch(e => {
+                    return reject(e)
+               })
+          })
+     }
+
+     breadcrumbs(data = { "id": 2, "label": "Football", "slug": "football" }, cookie) {
+          return new Promise((resolve, reject) => {
+               api.post('/spectate/translation/breadcrumbs', qs.stringify({ sport: JSON.stringify(data) }), {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -29,9 +46,13 @@ class bets888 {
           })
      }
 
-     breadcrumbs(data = { "id": 2, "label": "Football", "slug": "football" }) {
+     inPlayEvent(sport = 'football', cookie) {
           return new Promise((resolve, reject) => {
-               api.post('/spectate/translation/breadcrumbs', qs.stringify({ sport: JSON.stringify(data) })).then(rest => {
+               api.get(`/spectate/inplay-req/getInplayEvents/${sport}`, {}, {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -39,9 +60,13 @@ class bets888 {
           })
      }
 
-     inPlayEvent(sport = 'football') {
+     featured(cookie) {
           return new Promise((resolve, reject) => {
-               api.get(`/spectate/inplay-req/getInplayEvents/${sport}`).then(rest => {
+               api.get(`/spectate/inplay-req/featured`, {}, {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -49,19 +74,11 @@ class bets888 {
           })
      }
 
-     featured() {
+     getVirtualGames(cookie) {
           return new Promise((resolve, reject) => {
-               api.get(`/spectate/inplay-req/featured`).then(rest => {
-                    return resolve(rest.data)
-               }).catch(e => {
-                    return reject(e)
-               })
-          })
-     }
+               api.get(`/spectate/sportsbook-req/getVirtualGamesList`, {}, {
 
-     getVirtualGames() {
-          return new Promise((resolve, reject) => {
-               api.get(`/spectate/sportsbook-req/getVirtualGamesList`).then(rest => {
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -72,9 +89,13 @@ class bets888 {
      getFeaturedMatchesEvents(sport = 'football', query = {
           country: 'BRA',
           widget_label: 'Featured Football'
-     }) {
+     }, cookie) {
           return new Promise((resolve, reject) => {
-               api.post(`/spectate/sportsbook-req/getFeaturedMatchesEventsAjax/${sport}`, qs.stringify(query)).then(rest => {
+               api.post(`/spectate/sportsbook-req/getFeaturedMatchesEventsAjax/${sport}`, qs.stringify(query), {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -82,9 +103,13 @@ class bets888 {
           })
      }
 
-     allSports() {
+     allSports(cookie) {
           return new Promise((resolve, reject) => {
-               api.get(`/spectate/inplay-req/getInplayEvents/all`).then(rest => {
+               api.get(`/spectate/inplay-req/getInplayEvents/all`, {}, {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -92,9 +117,13 @@ class bets888 {
           })
      }
 
-     getWidgetEvent(sport = '', label = 'Featured Homepage') {
+     getWidgetEvent(sport = 'football', label = 'Featured Homepage', cookie) {
           return new Promise((resolve, reject) => {
-               api.post(`/spectate/sportsbook-req/getSportsWidgetEventsAjax/${sport}`, qs.stringify({ widget_label: label })).then(rest => {
+               api.post(`/spectate/sportsbook-req/getSportsWidgetEventsAjax/${sport}`, qs.stringify({ widget_label: label }), {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -102,9 +131,13 @@ class bets888 {
           })
      }
 
-     getPopularEvents(spect = '') {
+     getPopularEvents(cookie) {
           return new Promise((resolve, reject) => {
-               api.get(`/spectate/sportsbook-req/getPopularWidgetEventsAjax`).then(rest => {
+               api.get(`/spectate/sportsbook-req/getPopularWidgetEventsAjax`, {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -112,9 +145,13 @@ class bets888 {
           })
      }
 
-     getEspecialEvents(spect = '') {
+     getEspecialEvents(spect = '', cookie) {
           return new Promise((resolve, reject) => {
-               api.post(`/spectate/sportsbook-req/getSpecialsEventsAjax`, qs.stringify({})).then(rest => {
+               api.post(`/spectate/sportsbook-req/getSpecialsEventsAjax`, qs.stringify({}), {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -122,9 +159,13 @@ class bets888 {
           })
      }
 
-     sportBook(region = 'BRA') {
+     sportBook(region = 'BRA', cookie) {
           return new Promise((resolve, reject) => {
-               api.get(`/spectate/sportsbook-req/initRacing/horse-racing/${region}`).then(rest => {
+               api.get(`/spectate/sportsbook-req/initRacing/horse-racing/${region}`, {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -142,9 +183,13 @@ class bets888 {
           eventId: 1349631,
           categoryId: 29850,
           sportId: 2
-     }) {
+     }, cookie) {
           return new Promise((resolve, reject) => {
-               api.get(`/spectate/more_games/fetchEvents`, qs.stringify(fetch)).then(rest => {
+               api.get(`/spectate/more_games/fetchEvents`, qs.stringify(fetch), {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -152,9 +197,13 @@ class bets888 {
           })
      }
 
-     event(event = '') {
+     event(event = '', cookie) {
           return new Promise((resolve, reject) => {
-               api.get(`/spectate/inplay-req/event/${event}`).then(rest => {
+               api.get(`/spectate/inplay-req/event/${event}`, {}, {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -162,9 +211,13 @@ class bets888 {
           })
      }
 
-     urlPath(path = '/au-vivo/mercados_partida/1349631-ipe-1349631/') {
+     urlPath(path = '/au-vivo/mercados_partida/1349631-ipe-1349631/', cookie) {
           return new Promise((resolve, reject) => {
-               api.post(`/spectate/translation/urlPath`, qs.stringify({ urlPath: path })).then(rest => {
+               api.post(`/spectate/translation/urlPath`, qs.stringify({ urlPath: path }), {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
@@ -172,9 +225,13 @@ class bets888 {
           })
      }
 
-     queryHost(url = '', method = '', query = {}) {
+     queryHost(url = '', method = '', query = {}, cookie) {
           return new Promise((resolve, reject) => {
-               api[method](url, qs.stringify(query)).then(rest => {
+               api[method](url, qs.stringify(query), {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
                     return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
