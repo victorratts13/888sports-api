@@ -43,6 +43,89 @@ sport.webConfig().then(rest => {
 })
 ```
 
+>- Nota: Todas as requisições precisam do cookie gerado pelo parametro ``webConfig``
+
+exemplo: 
+
+```js
+sport.webConfig().then(async (rest) => {
+     console.log(rest.cookie)//cookie em formato de texto
+     var sp = await sport.allSports(rest.cookie);//cookie passado no escopo da requisição
+     console.log(sp)//resposta
+})
+```
+
+O retorno esperado seria:
+
+```js
+{
+  preplay: [
+    { event_id: 1335422, markets: [Array] },
+    { event_id: 1335426, markets: [Array] },
+    { event_id: 1335427, markets: [Array] },
+    { event_id: 1335428, markets: [Array] },
+    { event_id: 1335429, markets: [Array] },
+    { event_id: 1335430, markets: [Array] },
+    { event_id: 1335431, markets: [Array] }
+  ],
+  selections: {
+    '941722': [ [Object], [Object], [Object] ],
+    '941725': [ [Object], [Object], [Object] ],
+    '941726': [ [Object], [Object], [Object] ],
+    '941730': [ [Object], [Object], [Object] ],
+    '962111': { '1383381': [Array], '1383384': [Array], '1383387': [Array] },
+    '962132': { '1383381': [Array], '1383384': [Array], '1383387': [Array] },
+    '962145': { '1383381': [Array], '1383384': [Array], '1383387': [Array] },
+    '962168': { '1383381': [Array], '1383384': [Array], '1383387': [Array] },
+    '970659': { '1383381': [Array], '1383384': [Array], '1383387': [Array] },
+    '970695': { '1383381': [Array], '1383384': [Array], '1383387': [Array] },
+    '970701': { '1383381': [Array], '1383384': [Array], '1383387': [Array] },
+    '970713': { '1383381': [Array], '1383384': [Array], '1383387': [Array] }
+  },
+  live_events: [
+    {
+      count: 102,
+      sport: 'football',
+      sport_id: 2,
+      sport_slug_i18n: 'futebol'
+    }
+  ],
+  sports: [
+    {
+      market_type: 'default',
+      name: 'Futebol',
+      grouped_market_ids: [],
+      market_id: 1408196,
+      tournaments: [Array],
+      id: 2,
+      columns: 3,
+      slug: 'football',
+      usesThreeMarketView: false,
+      default_market_headers: [Object],
+      competitor_sides: [Array]
+    }
+  ],
+  markets_headers: {
+    '1350707': { '1': '1', '2': '2' },
+    '1384135': { '1': '1', '2': '2' }
+  },
+  virtual_games: [
+    {
+      tournament_id: 365516,
+      event_id: 820169,
+      tournament_name: 'Futebol Virtual',
+      sport_name: 'Esportes Virtuals',
+      game_slug: 'virtual-football',
+      game_name: 'Futebol Virtual',
+      active: 1,
+      game_id: '2060',
+      category_id: 48228,
+      sport_id: 900,
+      category_name: 'Futebol Virtual'
+    }
+}
+```
+
 ### breadcrumbs
 
 este metodo mostra a atual seleção configurada. 
