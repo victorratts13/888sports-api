@@ -1,6 +1,6 @@
 'use strict'
 const qs = require('qs');
-const { api, jar } = require("./api/base.api");
+const { api, jar, URL } = require("./api/base.api");
 const { cookiesSet } = require('./controllers/cookies.controller');
 
 class bets888 {
@@ -91,6 +91,7 @@ class bets888 {
           widget_label: 'Featured Football'
      }, cookie) {
           return new Promise((resolve, reject) => {
+               console.log(`${URL}/spectate/sportsbook-req/getFeaturedMatchesEventsAjax/${sport}`)
                api.post(`/spectate/sportsbook-req/getFeaturedMatchesEventsAjax/${sport}`, qs.stringify(query), {
                     headers: {
                          cookie: cookie

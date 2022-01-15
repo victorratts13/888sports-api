@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const axios = require('axios');
 const { wrapper } = require('axios-cookiejar-support');
 const { CookieJar } = require('tough-cookie');
@@ -30,7 +30,7 @@ var header = {
      'cache-control': ' max-age=0',
      //'sec-ch-ua': '"Chromium";v="94", "Google Chrome";v="94", ";Not A Brand";v="99"',
      //'sec-ch-ua-platform': '"Linux"',
-     'cookie': process.env.COOKIE || parseCookie(Ck),
+     'cookie': parseCookie(Ck),
      //newrelic: 'eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkJyb3dzZXIiLCJhYyI6IjI1MDk2NzQiLCJhcCI6IjMwNzYyODM3IiwiaWQiOiIzYTg3ODBjMmU1MzY1Y2U3IiwidHIiOiI2MWI5MTJmOWNkYmU0MjI5IiwidGkiOjE2MzQ4NzA2MDkzMjd9fQ==',
      origin: 'https://www.888sport.com',
      referer: 'https://www.888sport.com/',
@@ -42,7 +42,7 @@ var header = {
 }
 
 const jar = new CookieJar();
-const URL = process.env.BASE || 'https://spectate-web.888sport.com';
+const URL = 'https://spectate-web.888sport.com';
 //console.log(JSON.stringify(jar))
 const api = wrapper(axios.create({
      baseURL: URL,
