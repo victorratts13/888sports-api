@@ -24,8 +24,31 @@ class bets888 {
                api.post('/spectate/load/state', qs.stringify(config)).then(rest => {
                     return resolve({
                          data: rest.data,
-                         cookie: cookiesSet({jar, jar})
+                         cookie: cookiesSet({ jar, jar })
                     })
+               }).catch(e => {
+                    return reject(e)
+               })
+          })
+     }
+
+     byDate(date = 'today', cookie) {
+          /**
+           * Use ISO format for 
+           * get by date. 
+           */
+          if (date == 'today') {
+               var isoDate = new Date()
+               date = isoDate.toISOString();
+          }
+
+          return new Promise((resolve, reject) => {
+               api.get(`/spectate/inplay-req/getScheduledEvents?date=${date}`, {}, {
+                    headers: {
+                         cookie: cookie
+                    }
+               }).then(rest => {
+                    return resolve(rest.data)
                }).catch(e => {
                     return reject(e)
                })
@@ -45,6 +68,8 @@ class bets888 {
                })
           })
      }
+
+
 
      inPlayEvent(sport = 'football', cookie) {
           return new Promise((resolve, reject) => {

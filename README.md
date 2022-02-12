@@ -146,6 +146,17 @@ sport.inPlayEvent('football', 'cookies').then(rest => {
 })
 ```
 
+### byDate
+
+Este metodo server para obter dados de eventos a partir da data. 
+você pode definir a data a partir do formato ``yyyy-mm-dd``: 
+
+```js
+sport.byDate('2022-02-12', 'cookies').then(rest => {
+     console.log(rest)
+})
+```
+
 ### featured
 
 para obter informações de eventos apresentados.
