@@ -6,8 +6,8 @@ const sport = new bets();
 //getting data from 888sports
 sport.webConfig().then(async (rest) => {
      console.log(rest.cookie)
-     var boxing = await sport.getWidgetEvent('mma', 'Featured Homepage', rest.cookie)
-     console.log(boxing)
+     // var boxing = await sport.getWidgetEvent('mma', 'Featured Homepage', rest.cookie)
+     // console.log(boxing)
      //var sp = await sport.allSports(rest.cookie);
      //console.log(sp)
 })

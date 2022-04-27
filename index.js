@@ -5,7 +5,7 @@ const { cookiesSet } = require('./controllers/cookies.controller');
 
 class bets888 {
      constructor(config = {
-          currency_code: 'GBP',
+          currency_code: 'EUR',
           language: 'por',
           sub_brand_id: 8,
           brand_id: 8,
